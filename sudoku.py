@@ -9,4 +9,13 @@ class Input:
             board.append(input().split())
         return board
 
-#class Check:
+class Check:
+    @staticmethod
+    def isValidSudoku(board: List[List[str]]) -> bool:
+        for i in range(9):
+            rows = [x for x in board[i] if x != "."]
+            if len(rows) != len(set(rows)):
+                return False
+            column = [board[j][i] for j in range(9) if board[j][i] != "."]
+            if len(column) != len(set(column)):
+                return False
